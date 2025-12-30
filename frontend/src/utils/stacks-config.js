@@ -8,7 +8,6 @@ const baseUserSession = new UserSession({ appConfig });
 
 /**
  * Proxy UserSession to catch SessionData corruption errors.
- * This happens when switching between library versions or after failed writes.
  */
 export const userSession = new Proxy(baseUserSession, {
     get(target, prop, receiver) {
@@ -31,11 +30,16 @@ export const userSession = new Proxy(baseUserSession, {
     }
 });
 
-export const network = STACKS_MAINNET; // Standardizing on Mainnet after success
+// Environment-aware network configuration
+const networkType = process.env.NEXT_PUBLIC_STACKS_NETWORK || 'mainnet';
+export const network = networkType === 'testnet' ? new StacksTestnet() : STACKS_MAINNET;
 
 export const getAddress = () => {
     if (userSession.isUserSignedIn()) {
-        return userSession.loadUserData().profile.stxAddress.mainnet;
+        const userData = userSession.loadUserData();
+        return networkType === 'testnet'
+            ? userData.profile.stxAddress.testnet
+            : userData.profile.stxAddress.mainnet;
     }
     return null;
 };
@@ -43,9 +47,11 @@ export const getAddress = () => {
 export const authenticate = () => {
     showConnect({
         appDetails: {
-            name: 'StacksOrangeVault',
-            icon: window.location.origin + '/assets/logo.png',
+            name: process.env.NEXT_PUBLIC_APP_NAME || 'StacksOrangeVault',
+            icon: typeof window !== 'undefined' ? window.location.origin + '/assets/logo.png' : '',
         },
+        // Reown (WalletConnect) Project ID for mobile support
+        projectId: process.env.NEXT_PUBLIC_REOWN_PROJECT_ID,
         redirectTo: '/',
         onFinish: () => {
             window.location.reload();

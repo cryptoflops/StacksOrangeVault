@@ -3,7 +3,7 @@ import { network, getAddress } from './stacks-config.js';
 import { fetchCallReadOnlyFunction, cvToValue, standardPrincipalCV, uintCV, PostConditionMode, contractPrincipalCV } from '@stacks/transactions';
 import { openContractCall } from '@stacks/connect';
 
-const CONTRACT_ADDRESS = 'SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ';
+const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || 'SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ';
 const TOKEN_CONTRACT = 'orange-token-v19';
 const STAKING_CONTRACT = 'orange-staking-v19';
 const MARKETPLACE_CONTRACT = 'orange-marketplace-v19';
@@ -16,8 +16,17 @@ export const fetchTokenBalance = async () => {
 
     try {
         // Use Hiro API for more reliable balance fetching
-        const url = `https://api.mainnet.hiro.so/extended/v1/address/${address}/balances`;
-        const response = await fetch(url);
+        const baseUrl = network.isTestnet
+            ? 'https://api.testnet.hiro.so'
+            : 'https://api.mainnet.hiro.so';
+        const url = `${baseUrl}/extended/v1/address/${address}/balances`;
+
+        const headers = {};
+        if (process.env.NEXT_PUBLIC_HIRO_API_KEY) {
+            headers['x-api-key'] = process.env.NEXT_PUBLIC_HIRO_API_KEY;
+        }
+
+        const response = await fetch(url, { headers });
         if (!response.ok) throw new Error('API request failed');
         const data = await response.json();
 
