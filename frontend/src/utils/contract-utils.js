@@ -1,5 +1,5 @@
 import { network, getAddress } from './stacks-config.js';
-// @ts-expect-error
+// @ts-expect-error - dependency mismatch
 import { fetchCallReadOnlyFunction, cvToValue, standardPrincipalCV, uintCV, PostConditionMode, contractPrincipalCV } from '@stacks/transactions';
 import { openContractCall } from '@stacks/connect';
 

@@ -11,18 +11,23 @@ const CONTRACT_ADDRESS = 'SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ';
 const TOKEN_CONTRACT = 'orange-token-v19';
 const STAKING_CONTRACT = 'orange-staking-v19';
 
+interface StakingInfo {
+    amount: { value: string };
+    'staked-at': { value: string };
+}
+
 export function Staking() {
     const { doContractCall } = useConnect();
     const [amount, setAmount] = useState('');
     const [balance, setBalance] = useState('0');
-    const [activeStake, setActiveStake] = useState<any>(null);
+    const [activeStake, setActiveStake] = useState<StakingInfo | null>(null);
 
     const updateData = async () => {
         if (userSession.isUserSignedIn()) {
             const bal = await fetchTokenBalance();
             setBalance(bal.toString());
             const stake = await fetchActiveStake();
-            setActiveStake(stake);
+            setActiveStake(stake as StakingInfo);
         }
     };
 

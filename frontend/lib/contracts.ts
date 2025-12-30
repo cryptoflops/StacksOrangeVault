@@ -1,4 +1,4 @@
-import { STACKS_MOCKNET, STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
+import { STACKS_MOCKNET } from '@stacks/network';
 
 // Configuration
 // TODO: Switch this based on environment

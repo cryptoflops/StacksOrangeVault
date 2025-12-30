@@ -8,8 +8,6 @@ import { AnchorMode, PostConditionMode, uintCV, contractPrincipalCV } from '@sta
 const CONTRACT_ADDRESS = 'SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ';
 const TOKEN_CONTRACT = 'orange-token-v19';
 const LAUNCHPAD_CONTRACT = 'orange-launchpad-v19';
-const NFT_CONTRACT = 'orange-nft-v19';
-const MARKETPLACE_CONTRACT = 'orange-marketplace-v19';
 
 export function Launchpad() {
     const { doContractCall } = useConnect();

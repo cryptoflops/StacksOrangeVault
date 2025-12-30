@@ -5,6 +5,8 @@ import { STACKS_MAINNET } from '@stacks/network';
 import { AnchorMode, PostConditionMode, uintCV, contractPrincipalCV } from '@stacks/transactions';
 import { userSession } from '../src/utils/stacks-config.js';
 
+import Image from 'next/image';
+
 const CONTRACT_ADDRESS = 'SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ';
 const NFT_CONTRACT = 'orange-nft-v19';
 const MARKETPLACE_CONTRACT = 'orange-marketplace-v19';
@@ -59,9 +61,11 @@ export function Marketplace() {
                 {NFT_ITEMS.map((nft) => (
                     <div key={nft.id} className="nft-card glass rounded-3xl overflow-hidden group">
                         <div className="relative aspect-square overflow-hidden">
-                            <img
+                            <Image
                                 src={nft.image}
                                 alt={nft.name}
+                                width={500}
+                                height={500}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                             />
                             <div className="absolute top-4 right-4 bg-black/50 backdrop-blur px-3 py-1 rounded-full text-xs font-bold border border-white/10">

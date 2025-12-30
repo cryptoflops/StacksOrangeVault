@@ -9,27 +9,33 @@ import { Marketplace } from '../components/marketplace';
 import { Staking } from '../components/staking';
 import { fetchTokenBalance, fetchActiveStake, formatTokenAmount } from '../src/utils/contract-utils';
 
+interface StakingInfo {
+  amount: { value: string };
+  'staked-at': { value: string };
+}
+
 export default function Home() {
   const { authenticate } = useConnect();
   const [mounted, setMounted] = useState(false);
   const [balance, setBalance] = useState('0');
-  const [activeStake, setActiveStake] = useState<any>(null);
+  const [activeStake, setActiveStake] = useState<StakingInfo | null>(null);
 
   const updateUserData = async () => {
     if (userSession.isUserSignedIn()) {
       const bal = await fetchTokenBalance();
       setBalance(bal.toString());
       const stake = await fetchActiveStake();
-      setActiveStake(stake);
+      setActiveStake(stake as StakingInfo);
     }
   };
 
   useEffect(() => {
-    setMounted(true);
-    const init = async () => {
-      await updateUserData();
-    };
-    init();
+    const timer = setTimeout(() => setMounted(true), 0);
+    if (userSession.isUserSignedIn()) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      updateUserData();
+    }
+    return () => clearTimeout(timer);
   }, []);
 
 
@@ -83,7 +89,7 @@ export default function Home() {
         <section className="pt-12 grid grid-cols-1 lg:grid-cols-3 gap-8 items-end">
           <div className="lg:col-span-2">
             <h1 className="text-6xl font-black uppercase tracking-tighter mb-4">Command Center</h1>
-            <p className="text-lg opacity-40 max-w-xl">Welcome back, Agent. Your Orange Vault assets are secure and synchronized with Stacks Mainnet.</p>
+            <p className="text-lg opacity-40 max-w-xl">Welcome back, Commander. Your Orange Vault assets are secure and synchronized with Stacks Mainnet.</p>
           </div>
 
           <div className="glass p-8 rounded-3xl space-y-6">

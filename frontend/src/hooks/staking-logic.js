@@ -1,5 +1,5 @@
-import { userSession, getAddress } from '../utils/stacks-config.js';
-import { fetchTokenBalance, fetchActiveStake, stakeTokens, formatTokenAmount } from '../utils/contract-utils.js';
+import { userSession } from '../utils/stacks-config.js';
+import { fetchTokenBalance, fetchActiveStake, stakeTokens, unstakeTokens, formatTokenAmount } from '../utils/contract-utils.js';
 
 export const initStakingPage = async () => {
     const balanceDisplay = document.getElementById('token-balance');

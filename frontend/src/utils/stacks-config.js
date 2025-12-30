@@ -1,5 +1,6 @@
 import { AppConfig, UserSession, showConnect } from '@stacks/connect';
-import { StacksTestnet, STACKS_MAINNET } from '@stacks/network';
+// Environment-aware network configuration
+import { STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
 
 const appConfig = new AppConfig(['store_write', 'publish_data']);
 
@@ -30,9 +31,8 @@ export const userSession = new Proxy(baseUserSession, {
     }
 });
 
-// Environment-aware network configuration
 const networkType = process.env.NEXT_PUBLIC_STACKS_NETWORK || 'mainnet';
-export const network = networkType === 'testnet' ? new StacksTestnet() : STACKS_MAINNET;
+export const network = networkType === 'testnet' ? STACKS_TESTNET : STACKS_MAINNET;
 
 export const getAddress = () => {
     if (userSession.isUserSignedIn()) {
