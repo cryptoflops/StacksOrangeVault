@@ -1,0 +1,67 @@
+---
+id: 0
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://api.hiro.so"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: orange-sip010-ft-trait-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 3810
+            path: contracts/orange-sip010-ft-trait-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-launchpad-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 11820
+            path: contracts/orange-launchpad-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-sip009-nft-trait-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 2780
+            path: contracts/orange-sip009-nft-trait-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-marketplace-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 13370
+            path: contracts/orange-marketplace-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-multisig-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 1340
+            path: contracts/orange-multisig-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-nft-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 10680
+            path: contracts/orange-nft-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-staking-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 10490
+            path: contracts/orange-staking-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+        - contract-publish:
+            contract-name: orange-token-v19
+            expected-sender: SP1TN1ERKXEM2H9TKKWGPGZVNVNEKS92M7M3CKVJJ
+            cost: 10550
+            path: contracts/orange-token-v19.clar
+            anchor-block-only: true
+            clarity-version: 1
+      epoch: "2.05"

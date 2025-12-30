@@ -1,0 +1,127 @@
+<!-- Quest Card Component -->
+<div class="quest-card glass">
+    <div class="quest-image-container">
+        <img src="{image_url}" alt="{title}" class="quest-image">
+        <div class="quest-badge-icon">
+            <span class="icon">🏆</span>
+        </div>
+    </div>
+
+    <div class="quest-content">
+        <h3 class="quest-title">{title}</h3>
+        <p class="quest-description">{description}</p>
+
+        <div class="quest-progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {progress_percent}%"></div>
+            </div>
+            <div class="progress-text">{progress_text}</div>
+        </div>
+
+        <button class="btn-primary quest-action-btn">
+            {action_label}
+        </button>
+    </div>
+</div>
+
+<style>
+    .quest-card {
+        width: 100%;
+        max-width: 320px;
+        border-radius: var(--radius-16);
+        overflow: hidden;
+        transition: var(--transition-slow);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .quest-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-primary-orange);
+    }
+
+    .quest-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #000;
+    }
+
+    .quest-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition-slow);
+    }
+
+    .quest-card:hover .quest-image {
+        transform: scale(1.05);
+    }
+
+    .quest-badge-icon {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        background: var(--color-primary-orange);
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        box-shadow: var(--shadow-sm);
+    }
+
+    .quest-content {
+        padding: var(--space-24);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .quest-title {
+        font-size: 18px;
+        margin-bottom: var(--space-8);
+    }
+
+    .quest-description {
+        font-size: 14px;
+        color: var(--color-text-secondary);
+        margin-bottom: var(--space-24);
+        line-height: 1.4;
+    }
+
+    .quest-progress-container {
+        margin-bottom: var(--space-16);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(224, 230, 242, 0.1);
+        border-radius: var(--radius-full);
+        margin-bottom: var(--space-8);
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: var(--color-primary-orange);
+        border-radius: var(--radius-full);
+        transition: width 0.5s ease;
+    }
+
+    .progress-text {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        text-align: right;
+        font-weight: 500;
+    }
+
+    .quest-action-btn {
+        width: 100%;
+        margin-top: auto;
+    }
+</style>

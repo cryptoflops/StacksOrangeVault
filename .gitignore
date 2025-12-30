@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# Testing and Coverage
+coverage/
+.cache/
+history.txt
+
+# Build and Production
+.next/
+out/
+build/
+dist/
+
+# Stacks / Clarinet Specific
+logs/
+*.log
+costs-reports.json
+**/settings/Mainnet.toml
+**/settings/Testnet.toml
+
+# Environment and Secrets
+.env
+.env.*
+.pem
+
+# IDE and OS
+.DS_Store
+.vscode/
+.idea/
+.vercel
+*.tsbuildinfo
+
+# Project Meta
+.PROJECT_CONTEXT.md
+write_test.txt
+test_diag.sh

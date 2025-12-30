@@ -1,0 +1,40 @@
+[project]
+name = "contracts"
+description = ""
+authors = []
+telemetry = true
+cache_dir = "./.cache"
+
+[contracts.orange-sip009-nft-trait-v19]
+path = "contracts/orange-sip009-nft-trait-v19.clar"
+
+[contracts.orange-sip010-ft-trait-v19]
+path = "contracts/orange-sip010-ft-trait-v19.clar"
+
+[contracts.orange-token-v19]
+path = "contracts/orange-token-v19.clar"
+depends_on = ["orange-sip010-ft-trait-v19"]
+
+[contracts.orange-nft-v19]
+path = "contracts/orange-nft-v19.clar"
+depends_on = ["orange-sip009-nft-trait-v19"]
+
+[contracts.orange-launchpad-v19]
+path = "contracts/orange-launchpad-v19.clar"
+depends_on = ["orange-sip010-ft-trait-v19"]
+
+[contracts.orange-marketplace-v19]
+path = "contracts/orange-marketplace-v19.clar"
+depends_on = ["orange-sip009-nft-trait-v19", "orange-sip010-ft-trait-v19"]
+
+[contracts.orange-multisig-v19]
+path = "contracts/orange-multisig-v19.clar"
+depends_on = []
+
+[contracts.orange-staking-v19]
+path = "contracts/orange-staking-v19.clar"
+depends_on = ["orange-sip010-ft-trait-v19"]
+
+[repl.analysis]
+passes = ["check_checker"]
+check_checker = { trusted_sender = false, trusted_caller = false, callee_filter = false }

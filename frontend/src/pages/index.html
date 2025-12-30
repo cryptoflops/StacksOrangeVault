@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StacksOrangeVault - Bitcoin L2 Ecosystem</title>
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <style>
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(15, 20, 25, 0.4), var(--color-dark-bg)),
+                url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            line-height: 1.1;
+            margin-bottom: var(--space-24);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-32);
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-16);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-24);
+        }
+
+        .feature-card {
+            padding: var(--space-32);
+            border-radius: var(--radius-16);
+            transition: var(--transition-slow);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-md);
+            background: rgba(26, 31, 39, 0.8);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: var(--space-16);
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: var(--space-12);
+        }
+
+        .feature-card p {
+            color: var(--color-text-secondary);
+            font-size: 14px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-32);
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 48px;
+            color: var(--color-primary-orange);
+            margin-bottom: var(--space-8);
+        }
+
+        .stat-item p {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Placeholder -->
+    <div id="header-root"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Secure, Reward, and <span class="text-orange">Empower</span> the Bitcoin L2 Ecosystem</h1>
+                <p>Join the next generation of DeFi on Stacks. Complete quests, earn badges, and unlock premium yields
+                    with Orange Vault.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="window.location.href='quests.html'">Start Earning</button>
+                    <button class="btn-secondary" onclick="window.location.href='marketplace.html'">Explore
+                        Market</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card glass">
+                        <span class="feature-icon">🏆</span>
+                        <h3>Quest Protocol</h3>
+                        <p>Complete on-chain actions to earn exclusive Soulbound Badges and verify your expertise in the
+                            ecosystem.</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <span class="feature-icon">🔐</span>
+                        <h3>Yield Staking</h3>
+                        <p>Lock your ORANGE tokens to unlock premium tier benefits, including lower fees and early
+                            access to launches.</p>
+                    </div>
+                    <div class="feature-card glass">
+                        <span class="feature-icon">🛍️</span>
+                        <h3>Marketplace</h3>
+                        <p>Discover and trade rare NFTs from vetted Bitcoin L2 projects with our secure, high-speed
+                            marketplace.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="section-padding">
+            <div class="container stats-section">
+                <div class="stat-item">
+                    <h2>33+</h2>
+                    <p>Projects Launched</p>
+                </div>
+                <div class="stat-item">
+                    <h2>128%</h2>
+                    <p>Avg Staking APY</p>
+                </div>
+                <div class="stat-item">
+                    <h2>10K+</h2>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-item">
+                    <h2>$25M+</h2>
+                    <p>Total Value Locked</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!-- Header Component -->
+<header class="header glass sticky-nav">
+    <div class="container header-content">
+        <div class="logo">
+            Stacks<span class="text-orange">Orange</span>Vault
+        </div>
+
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">HOME</a>
+            <a href="launchpad.html" class="nav-item">LAUNCHPAD</a>
+            <a href="quests.html" class="nav-item">QUESTS</a>
+            <a href="staking.html" class="nav-item">STAKING</a>
+            <a href="marketplace.html" class="nav-item">MARKET</a>
+            <a href="#" class="nav-item">DOCS</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="btn-primary wallet-btn" id="connect-wallet">
+                <span>Connect Wallet</span>
+            </button>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </button>
+        </div>
+    </div>
+</header>
+
+<style>
+    .sticky-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 72px;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .logo {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: var(--space-24);
+    }
+
+    .nav-item {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .nav-item:hover {
+        color: var(--color-primary-orange);
+    }
+
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .menu-toggle .bar {
+        width: 24px;
+        height: 2px;
+        background-color: var(--color-text-primary);
+        transition: var(--transition);
+    }
+
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+            /* Hide for mobile implementation */
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+
+        .wallet-btn span {
+            display: none;
+        }
+
+        .wallet-btn::after {
+            content: 'Connect';
+        }
+    }
+</style>
